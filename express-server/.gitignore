@@ -1,0 +1,6 @@
+node_modules/
+.idea
+.code
+.atom
+.DS_Store
+.env

@@ -1,0 +1,29 @@
+# Build image from a lighter version of Node
+FROM node:16-alpine
+
+# Create a working directory
+RUN mkdir -p /usr/src/app
+
+# Install a simple node server
+RUN npm install -g httpster
+
+# Copy application files
+COPY dist /usr/src/app
+
+# Expose server default port
+EXPOSE 3333
+
+# Run the app
+CMD ["httpster", "dist"]
+```
+
+We can now delete the previous image and container with build and run the container with
+```bash
+$ docker rm client
+$ docker rmi client:dev
+```
+
+Then build the newer image and container with
+```bash
+$ docker build -t client:dev .
+$ docker run -d --name client -p 3333:3333 client:dev
