@@ -20,6 +20,10 @@ RUN npm install -g @angular/cli
 # Install dependecies
 RUN npm install
 
+RUN ng update
+
+RUN npm update
+
 # Get all the code needed to run the app
 COPY . /app/
 
